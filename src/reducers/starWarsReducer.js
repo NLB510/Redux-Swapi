@@ -1,4 +1,4 @@
-import { FETCHING_DATA, ERROR, SUCCESS } from "../actions/index";
+import { FETCHING_DATA, FETCH_ERROR, FETCH_SUCCESS } from "../actions/index";
 
 const initialState = {
   characters: [],
@@ -16,16 +16,16 @@ export const charsReducer = (state = initialState, action) => {
         ...state,
         fetching: true
       }
-      case SUCCESS: 
+      case FETCH_SUCCESS: 
       return {
         ...state,
         characters: action.payload,
         fetching: false
       }
-      case ERROR: 
+      case FETCH_ERROR: 
         return {
           ...state,
-          error: action.error,
+          error: action.payload,
           fetching: false
         }
     default:
